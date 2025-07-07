@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Carter One", system-ui;
+  color: #fff;
+}
+
+button {
+  font-family: "Carter One", system-ui;
+  font-size: 20px;
+  padding: 10px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hidden {
+  display: none !important;
+}
