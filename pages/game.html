@@ -1,31 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Think & Whack</title>
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="/styles/game.css" />
-  </head>
-  <body>
-    <header>
-      <div class="timer">00:59</div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Think & Whack</title>
 
-    <main>
-      <section class="question-box">
-        <h2>17 + 29</h2>
-      </section>
-      <section class="mole-grid">
-        <!-- <div class="hole" id="hole-1">
-          <img src="/assets/images/ground-hole.png" class="hole-img" />
-          <img src="/assets/images/mole.png" class="mole hidden" id="mole-1" />
-        </div> -->
-      </section>
-    </main>
+  <link rel="stylesheet" href="/styles/global.css" />
+  <link rel="stylesheet" href="/styles/game.css" />
+</head>
+<body>
+  <header>
+    <div class="timer">00:59</div>
+  </header>
 
-    <footer>
-      <p>&copy; 2025 Think & Whack</p>
-    </footer>
-  </body>
+  <main>
+    <!-- Questions displayed here -->
+    <section class="question-box">
+      <h2>17 + 29</h2>
+    </section>
+
+    <!-- Grid holes and mole -->
+    <section class="mole-grid">
+      <!-- Line 1 (3 holes) -->
+      <div class="hole" id="hole-1">
+        <img src="/assets/images/ground-hole.png" class="hole-img" />
+        <img src="/assets/images/mole.png" class="mole hidden" id="mole-1" />
+      </div>
+      <div class="hole" id="hole-2">
+        <img src="/assets/images/ground-hole.png" class="hole-img" />
+        <img src="/assets/images/mole.png" class="mole hidden" id="mole-2" />
+      </div>
+      <div class="hole" id="hole-3">
+        <img src="/assets/images/ground-hole.png" class="hole-img" />
+        <img src="/assets/images/mole.png" class="mole hidden" id="mole-3" />
+      </div>
+
+      <!-- Line 2 (2 center holes) -->
+      <div class="hole" id="hole-4">
+        <img src="/assets/images/ground-hole.png" class="hole-img" />
+        <img src="/assets/images/mole.png" class="mole hidden" id="mole-4" />
+      </div>
+      <div class="hole" id="hole-5">
+        <img src="/assets/images/ground-hole.png" class="hole-img" />
+        <img src="/assets/images/mole.png" class="mole hidden" id="mole-5" />
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Think & Whack</p>
+  </footer>
+</body>
 </html>
