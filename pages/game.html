@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Think & Whack</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Think & Whack</title>
 
-  <link rel="stylesheet" href="/styles/global.css" />
-  <link rel="stylesheet" href="/styles/game.css" />
-</head>
-<body>
-  <header>
-    <div class="timer">00:59</div>
-  </header>
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/game.css" />
+    <link rel="stylesheet" href="/styles/result-modal.css" />
+  </head>
+  <body>
+    <header>
+      <div class="timer">00:59</div>
+    </header>
 
-  <main>
-    <!-- Questions displayed here -->
-    <section class="question-box">
-      <h2>Lorem, ipsum dolor.</h2>
-    </section>
+    <main>
+      <!-- Questions displayed here -->
+      <section class="question-box">
+        <h2>Lorem, ipsum dolor.</h2>
+      </section>
 
-    <!-- Grid holes and mole -->
-    <section class="mole-grid">
-      <!-- Line 1 (3 holes) -->
-      <div class="hole" id="hole-1">
-        <div class="answer-box hidden">lorem</div>
-        <img src="/assets/images/ground-hole.png" class="hole-img" />
-        <img src="/assets/images/mole.png" class="mole hidden" id="mole-1" />
-      </div>
-      <div class="hole" id="hole-2">
-        <div class="answer-box hidden">lorem</div>
-        <img src="/assets/images/ground-hole.png" class="hole-img" />
-        <img src="/assets/images/mole.png" class="mole hidden" id="mole-2" />
-      </div>
-      <div class="hole" id="hole-3">
-        <div class="answer-box hidden">lorem</div>
-        <img src="/assets/images/ground-hole.png" class="hole-img" />
-        <img src="/assets/images/mole.png" class="mole hidden" id="mole-3" />
-      </div>
+      <!-- Grid holes and mole -->
+      <section class="mole-grid">
+        <!-- Line 1 (3 holes) -->
+        <div class="hole" id="hole-1">
+          <div class="answer-box hidden">lorem</div>
+          <img src="/assets/images/ground-hole.png" class="hole-img" />
+          <img src="/assets/images/mole.png" class="mole hidden" id="mole-1" />
+        </div>
+        <div class="hole" id="hole-2">
+          <div class="answer-box hidden">lorem</div>
+          <img src="/assets/images/ground-hole.png" class="hole-img" />
+          <img src="/assets/images/mole.png" class="mole hidden" id="mole-2" />
+        </div>
+        <div class="hole" id="hole-3">
+          <div class="answer-box hidden">lorem</div>
+          <img src="/assets/images/ground-hole.png" class="hole-img" />
+          <img src="/assets/images/mole.png" class="mole hidden" id="mole-3" />
+        </div>
 
-      <!-- Line 2 (2 center holes) -->
-      <div class="hole" id="hole-4">
-        <div class="answer-box hidden">lorem</div>
-        <img src="/assets/images/ground-hole.png" class="hole-img" />
-        <img src="/assets/images/mole.png" class="mole hidden" id="mole-4" />
-      </div>
-      <div class="hole" id="hole-5">
-        <div class="answer-box hidden">lorem</div>
-        <img src="/assets/images/ground-hole.png" class="hole-img" />
-        <img src="/assets/images/mole.png" class="mole hidden" id="mole-5" />
-      </div>
-    </section>
-  </main>
+        <!-- Line 2 (2 center holes) -->
+        <div class="hole" id="hole-4">
+          <div class="answer-box hidden">lorem</div>
+          <img src="/assets/images/ground-hole.png" class="hole-img" />
+          <img src="/assets/images/mole.png" class="mole hidden" id="mole-4" />
+        </div>
+        <div class="hole" id="hole-5">
+          <div class="answer-box hidden">lorem</div>
+          <img src="/assets/images/ground-hole.png" class="hole-img" />
+          <img src="/assets/images/mole.png" class="mole hidden" id="mole-5" />
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Think & Whack</p>
-  </footer>
-</body>
+    <footer>
+      <p>&copy; 2025 Think & Whack</p>
+    </footer>
+
+    <!-- Modal for the result -->
+    <div id="resultModal" class="modal hidden">
+      <div class="modal-box">
+        <h2 class="modal-title">Your Result</h2>
+
+        <!-- Score -->
+        <div class="score-summary">
+          <div class="score-item correct">
+            <img src="/assets/images/correct-icon.png" class="score-icon" alt="Correct Answer" />
+            <span class="score-value">10</span>
+          </div>
+          <div class="score-item incorrect">
+            <img src="/assets/images/wrong-icon.png" class="score-icon" alt="Incorrect Answer" />
+            <span class="score-value">5</span>
+          </div>
+        </div>
+
+        <!-- Navigation after game -->
+        <div class="modal-actions">
+          <button class="action-btn home-btn">
+            <img src="/assets/icons/home-icon.png" class="navigation-icon" alt="Go to Home" />
+          </button>
+          <button class="action-btn replay-btn">
+            <img src="/assets/icons/replay-icon.png" class="navigation-icon" alt="Replay Game" />
+          </button>
+          <button class="action-btn category-btn">
+            <img src="/assets/icons/category-icon.png" class="navigation-icon" alt="Change Category" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
