@@ -9,6 +9,11 @@
 body {
   font-family: "Carter One", system-ui;
   color: #fff;
+  background-image: url("../assets/images/background-view.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 button {
