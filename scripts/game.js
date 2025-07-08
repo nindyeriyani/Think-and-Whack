@@ -1,3 +1,8 @@
+let correctCount = 0;
+let incorrectCount = 0;
+let gameTime = 60; // seconds
+let gameTimer;
+
 const countdownModal = document.getElementById('countdownModal');
 const countdownNumber = document.getElementById('countdownNumber');
 const answerBoxes = document.querySelectorAll('.answer-box');
@@ -32,30 +37,65 @@ function startCountdown() {
 
 // Start the game logic after countdown
 function startGame() {
-  const selectedSubject = localStorage.getItem("selectedSubject");
+  startNewQuestion(); // first question
 
-  // Validate subject
-  if (!selectedSubject || selectedSubject !== "math") {
-    alert("Only math is supported now.");
-    window.location.href = "/index.html";
-    return;
-  }
+  gameTimer = setInterval(() => {
+    gameTime--;
 
-  // Generate question and choices
+    // Update timer UI
+    document.querySelector(".timer").textContent = `00:${String(gameTime).padStart(2, "0")}`;
+
+    if (gameTime <= 0) {
+      clearInterval(gameTimer);
+      endGame(); // show result modal
+    }
+  }, 1000);
+}
+
+function startNewQuestion() {
   const { question, correctAnswer } = generateMathQuestion();
   const answerChoices = generateAnswerChoices(correctAnswer);
 
-  // Set question text
+  // Set question
   document.querySelector(".question-box h2").textContent = question;
 
-  // Set answers into answer boxes
+  // Update moles & answer boxes
+  const answerBoxes = document.querySelectorAll('.answer-box');
+  const moles = document.querySelectorAll('.mole');
+
   answerBoxes.forEach((box, index) => {
-    box.textContent = answerChoices[index];
-    box.dataset.correct = (answerChoices[index] === correctAnswer).toString();
+    const answer = answerChoices[index];
+    box.textContent = answer;
+    box.dataset.correct = (answer === correctAnswer).toString();
   });
+
+  moles.forEach(mole => mole.classList.remove("hidden")); // Show again if hidden
 }
 
 // Start countdown when DOM is ready
 window.addEventListener('DOMContentLoaded', () => {
   startCountdown();
 });
+
+answerBoxes.forEach(box => {
+  box.addEventListener('click', () => {
+    const isCorrect = box.dataset.correct === "true";
+
+    if (isCorrect) {
+      correctCount++;
+    } else {
+      incorrectCount++;
+    }
+
+    // Immediately go to next question
+    startNewQuestion();
+  });
+});
+
+function endGame() {
+  document.getElementById("resultModal").classList.remove("hidden");
+
+  // Set score
+  document.querySelector(".score-item.correct .score-value").textContent = correctCount;
+  document.querySelector(".score-item.incorrect .score-value").textContent = incorrectCount;
+}
