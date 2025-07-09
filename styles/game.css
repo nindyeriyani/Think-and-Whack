@@ -120,3 +120,93 @@ footer {
   transition: transform 0.2s;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+
+  .question-box {
+    width: 90%;
+    height: auto;
+    font-size: 20px;
+    padding: 20px;
+  }
+
+  .mole-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0 20px;
+    grid-auto-rows: 80px;
+    margin-top: 250px;
+  }
+
+  .hole:nth-child(1) {
+    grid-column: 1;
+  } /* left top */
+  .hole:nth-child(2) {
+    grid-column: 3;
+  } /* center top */
+  .hole:nth-child(3) {
+    grid-column: 2;
+  } /* right top */
+  .hole:nth-child(4) {
+    grid-column: 1;
+  } /* left bottom */
+  .hole:nth-child(5) {
+    grid-column: 3;
+  } /* right bottom */
+
+  .hole {
+    width: 160px;
+    height: auto;
+  }
+
+  .mole {
+    width: 100px;
+    bottom: 30px;
+  }
+
+  .answer-box {
+    font-size: 20px;
+    padding: 12px 20px;
+    bottom: 160px;
+  }
+
+  .timer {
+    font-size: 18px;
+    padding: 8px 14px;
+    width: auto;
+  }
+
+  #resultModal .modal-box {
+    padding: 20px 30px;
+  }
+
+  #resultModal .modal-title {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .question-box {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .hole {
+    width: 120px;
+  }
+
+  .mole {
+    width: 80px;
+  }
+
+  .answer-box {
+    font-size: 16px;
+    padding: 10px 15px;
+    bottom: 100px;
+  }
+
+  footer {
+    font-size: 13px;
+  }
+}

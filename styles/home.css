@@ -81,3 +81,18 @@ footer {
 .modal-content button:hover {
   background-color: var(--hover-color);
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 45px;
+  }
+
+  #startBtn {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .modal-content h2 {
+    font-size: 24px;
+  }
+}
