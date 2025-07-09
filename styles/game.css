@@ -18,6 +18,7 @@ header .timer {
   font-size: 24px;
   background-color: #fff;
   padding: 10px 20px;
+  width: 130px;
   border: 5px solid #75847F;
   border-radius: 10px;
   color: #75847F;
@@ -78,6 +79,11 @@ header .timer {
   width: 130px;
   z-index: 1;
   transition: bottom 0.3s ease;
+  pointer-events: auto;
+}
+
+.mole.pop-up {
+  bottom: 70px; /* move up */
 }
 
 /* Footer */
