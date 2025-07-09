@@ -23,16 +23,16 @@ main {
 }
 
 #startBtn {
-  background-color: #fff;
-  color: #75847F;
-  border: 8px solid #75847F;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  border: 8px solid var(--main-color);
   border-radius: 20px;
   font-size: 30px;
 }
 
 #startBtn:hover {
-  background-color: #75847F;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--accent-color);
 }
 
 footer {
@@ -43,9 +43,11 @@ footer {
 
 .modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,12 +55,12 @@ footer {
 }
 
 .modal-content {
-  background: white;
+  background: var(--accent-color);
   padding: 30px 50px;
-  border: 10px solid #75847F;
+  border: 10px solid var(--main-color);
   border-radius: 25px;
   text-align: center;
-  color: #75847F;
+  color: var(--main-color);
 }
 
 .modal-content h2 {
@@ -67,8 +69,8 @@ footer {
 }
 
 .modal-content button {
-  background-color: #75847F;
-  color: white;
+  background-color: var(--main-color);
+  color: var(--accent-color);
   border: none;
 }
 
@@ -77,5 +79,5 @@ footer {
 }
 
 .modal-content button:hover {
-  background-color: #57655F;
+  background-color: var(--hover-color);
 }

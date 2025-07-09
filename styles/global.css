@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Carter+One&display=swap");
 
+:root {
+  --main-color: #75847F;
+  --accent-color: #ffffff;
+  --hover-color: #57655F;
+  --modal-bg: rgba(0, 0, 0, 0.6);
+  --font-main: "Carter One", system-ui;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -7,8 +15,8 @@
 }
 
 body {
-  font-family: "Carter One", system-ui;
-  color: #fff;
+  font-family: var(--font-main);
+  color: var(--accent-color);
   background-image: url("../assets/images/background-view.png");
   background-size: cover;
   background-position: center;
@@ -17,7 +25,7 @@ body {
 }
 
 button {
-  font-family: "Carter One", system-ui;
+  font-family: var(--font-main);
   font-size: 20px;
   padding: 10px 25px;
   border-radius: 10px;

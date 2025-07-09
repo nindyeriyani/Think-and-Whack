@@ -2,7 +2,7 @@
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--modal-bg);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,12 +10,12 @@
 }
 
 .modal-box {
-  background: white;
+  background: var(--accent-color);
   padding: 30px 50px;
-  border: 10px solid #75847F;
+  border: 10px solid var(--main-color);
   border-radius: 25px;
   text-align: center;
-  color: #75847F;
+  color: var(--main-color);
 }
 
 .modal-title {
@@ -54,7 +54,7 @@
 }
 
 .action-btn {
-  background-color: #fff;
+  background-color: var(--accent-color);
   border: none;
   cursor: pointer;
   display: flex;

@@ -16,12 +16,12 @@ header .timer {
   top: 20px;
   left: 20px;
   font-size: 24px;
-  background-color: #fff;
+  background-color: var(--accent-color);
   padding: 10px 20px;
   width: 130px;
-  border: 5px solid #75847F;
+  border: 5px solid var(--main-color);
   border-radius: 10px;
-  color: #75847F;
+  color: #75847f;
 }
 
 /* Question */
@@ -29,10 +29,10 @@ header .timer {
   margin-top: 210px;
   width: 600px;
   height: 200px;
-  background-color: #fff;
-  color: #75847F;
+  background-color: var(--accent-color);
+  color: var(--main-color);
   font-size: 24px;
-  border: 10px solid #75847F;
+  border: 10px solid var(--main-color);
   border-radius: 20px;
   text-align: center;
   display: flex;
@@ -53,11 +53,21 @@ header .timer {
   position: relative;
 }
 
-.hole:nth-child(1) { grid-column: 1; } /* left top */
-.hole:nth-child(2) { grid-column: 3; } /* center top */
-.hole:nth-child(3) { grid-column: 5; } /* right top */
-.hole:nth-child(4) { grid-column: 2; } /* left bottom */
-.hole:nth-child(5) { grid-column: 4; } /* right bottom */
+.hole:nth-child(1) {
+  grid-column: 1;
+} /* left top */
+.hole:nth-child(2) {
+  grid-column: 3;
+} /* center top */
+.hole:nth-child(3) {
+  grid-column: 5;
+} /* right top */
+.hole:nth-child(4) {
+  grid-column: 2;
+} /* left bottom */
+.hole:nth-child(5) {
+  grid-column: 4;
+} /* right bottom */
 
 /* Mole dan Hole */
 .hole {
@@ -98,13 +108,13 @@ footer {
   bottom: 200px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #fff;
-  color: #75847F;
-  border: 5px solid #75847F;
+  background-color: var(--accent-color);
+  color: var(--main-color);
+  border: 5px solid var(--main-color);
   border-radius: 12px;
   padding: 15px 30px;
   font-size: 24px;
-  font-family: "Carter One", system-ui;
+  font-family: var(--font-main);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
   z-index: 2;
   transition: transform 0.2s;
