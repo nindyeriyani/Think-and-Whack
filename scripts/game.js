@@ -1,3 +1,4 @@
+// ========== STATE ==========
 let correctCount = 0;
 let incorrectCount = 0;
 let gameTime = 60;
@@ -5,46 +6,40 @@ let gameTimer;
 let canClick = true;
 let hasPlayedResultSound = false;
 
-// Load game sounds
+// ========== AUDIO ==========
 const playSound = new Audio("/assets/audio/play-sound.mp3");
 const resultSound = new Audio("/assets/audio/result.mp3");
-const whackSound = new Audio("/assets/audio/whack.mp3");
+const btnClickSound = new Audio("/assets/audio/btn-click.mp3");
 
-// Start background music for game
 playSound.loop = true;
 playSound.volume = 0.3;
+resultSound.volume = 0.2;
 
-window.addEventListener("DOMContentLoaded", () => {
-  playSound.play(); // play game background music
-  startCountdown();
-});
-
+// ========== ELEMENTS ==========
 const selectedSubject = localStorage.getItem("selectedSubject");
-if (!selectedSubject) {
-  alert("No subject selected. Returning to home.");
-  window.location.href = "/index.html";
-}
-
 const countdownModal = document.getElementById("countdownModal");
 const countdownNumber = document.getElementById("countdownNumber");
 const answerBoxes = document.querySelectorAll(".answer-box");
 const moles = document.querySelectorAll(".mole");
 const timerDisplay = document.querySelector(".timer");
+const resultModal = document.getElementById("resultModal");
+const resultTitle = document.querySelector(".modal-title");
+const correctScore = document.querySelector(".score-item.correct .score-value");
+const incorrectScore = document.querySelector(".score-item.incorrect .score-value");
 
-// MOLE CLICK SOUND + ANIMATION
-moles.forEach((mole) => {
-  mole.addEventListener("click", () => {
-    whackSound.play(); // play the whack sound
+// ========== VALIDATION ==========
+if (!selectedSubject) {
+  alert("No subject selected. Returning to home.");
+  window.location.href = "/index.html";
+}
 
-    // Visual whack effect
-    mole.src = "/assets/images/whack-mole.png";
-    setTimeout(() => {
-      mole.src = "/assets/images/mole.png";
-    }, 300);
-  });
+// ========== INITIALIZATION ==========
+window.addEventListener("DOMContentLoaded", () => {
+  playSound.play();
+  startCountdown();
 });
 
-// COUNTDOWN
+// ========== COUNTDOWN ==========
 function startCountdown() {
   let count = 3;
   countdownNumber.textContent = count;
@@ -63,7 +58,7 @@ function startCountdown() {
   }, 1000);
 }
 
-// GAME START
+// ========== GAME LOGIC ==========
 function startGame() {
   startNewQuestion();
 
@@ -78,12 +73,18 @@ function startGame() {
   }, 1000);
 }
 
-// NEW QUESTION
 function startNewQuestion() {
-  const { question, answer: correctAnswer } =
-    getRandomQuestion(selectedSubject);
-  const answerChoices = generateAnswerChoices(correctAnswer, selectedSubject);
+  let questionData, answerChoices;
 
+  if (selectedSubject === "math") {
+    questionData = generateMathQuestion();
+    answerChoices = generateAnswerChoices(questionData.answer, "math");
+  } else if (selectedSubject === "english") {
+    questionData = generateEnglishQuestion();
+    answerChoices = generateAnswerChoices(questionData.answer, "english");
+  }
+
+  const { question, answer: correctAnswer } = questionData;
   document.querySelector(".question-box h2").textContent = question;
 
   answerBoxes.forEach((box, index) => {
@@ -105,68 +106,55 @@ function startNewQuestion() {
   canClick = true;
 }
 
-// ANSWER CLICK
+// ========== EVENT: Answer Click ==========
 answerBoxes.forEach((box) => {
   box.addEventListener("click", () => {
     if (!canClick) return;
     canClick = false;
+    btnClickSound.play();
 
     const isCorrect = box.dataset.correct === "true";
-    if (isCorrect) correctCount++;
-    else incorrectCount++;
+    isCorrect ? correctCount++ : incorrectCount++;
 
     setTimeout(startNewQuestion, 400);
   });
 });
 
-// END GAME
+// ========== END GAME ==========
 function endGame() {
   if (!hasPlayedResultSound) {
     resultSound.play();
     hasPlayedResultSound = true;
   }
 
-  document.getElementById("resultModal").classList.remove("hidden");
-
-  document.querySelector(".score-item.correct .score-value").textContent =
-    correctCount;
-  document.querySelector(".score-item.incorrect .score-value").textContent =
-    incorrectCount;
-
-  const title = document.querySelector(".modal-title");
+  resultModal.classList.remove("hidden");
+  correctScore.textContent = correctCount;
+  incorrectScore.textContent = incorrectCount;
 
   if (correctCount >= 11) {
-    title.textContent = "Awesome!";
+    resultTitle.textContent = "Awesome!";
   } else if (correctCount >= 6) {
-    title.textContent = "Good Job!";
+    resultTitle.textContent = "Good Job!";
   } else {
-    title.textContent = "Keep Practicing!";
+    resultTitle.textContent = "Keep Practicing!";
   }
 }
 
-// HELPERS
-function showElements(elements) {
-  elements.forEach((el) => el.classList.remove("hidden"));
-}
-
-// START
-window.addEventListener("DOMContentLoaded", startCountdown);
-
-// === BUTTON NAVIGATION ===
+// ========== NAVIGATION ==========
 document.querySelector(".home-btn").addEventListener("click", () => {
   window.location.href = "/pages/index.html";
 });
 
 document.querySelector(".replay-btn").addEventListener("click", () => {
-  // Reset score and time
   correctCount = 0;
   incorrectCount = 0;
   gameTime = 60;
   hasPlayedResultSound = false;
-
-  // Hide modal
-  document.getElementById("resultModal").classList.add("hidden");
-
-  // Restart game
+  resultModal.classList.add("hidden");
   startGame();
 });
+
+// ========== HELPERS ==========
+function showElements(elements) {
+  elements.forEach((el) => el.classList.remove("hidden"));
+}
