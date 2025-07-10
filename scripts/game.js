@@ -142,7 +142,7 @@ function endGame() {
 
 // ========== NAVIGATION ==========
 document.querySelector(".home-btn").addEventListener("click", () => {
-  window.location.href = "/pages/index.html";
+  window.location.href = "/index.html";
 });
 
 document.querySelector(".replay-btn").addEventListener("click", () => {
